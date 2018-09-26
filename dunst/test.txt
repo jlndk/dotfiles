@@ -1,0 +1,617 @@
+method call time=1522274052.914204 sender=:1.44 -> destination=org.freedesktop.Notifications serial=25 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "0"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.wZHS3b"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.wZHS3b"
+      )
+   ]
+   int32 25000
+signal time=1522274075.592565 sender=:1.189 -> destination=:1.44 serial=15 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 7
+   uint32 2
+method call time=1522274081.377126 sender=:1.44 -> destination=org.freedesktop.Notifications serial=26 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "0"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.e91wYY"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.e91wYY"
+      )
+   ]
+   int32 25000
+signal time=1522274086.463993 sender=:1.196 -> destination=:1.44 serial=4 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 2
+   uint32 2
+method call time=1522274262.153361 sender=:1.198 -> destination=:1.199 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274262.153768 sender=:1.198 -> destination=:1.199 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274262.181011 sender=:1.201 -> destination=:1.199 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274262.211781 sender=:1.201 -> destination=:1.199 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+signal time=1522274264.886690 sender=:1.199 -> destination=:1.198 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 2
+   uint32 2
+method call time=1522274270.272480 sender=:1.205 -> destination=:1.206 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274270.272925 sender=:1.205 -> destination=:1.206 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+signal time=1522274273.872701 sender=:1.206 -> destination=:1.205 serial=5 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 2
+   uint32 2
+method call time=1522274397.077615 sender=:1.44 -> destination=org.freedesktop.Notifications serial=27 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "0"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.3UBfwJ"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.3UBfwJ"
+      )
+   ]
+   int32 25000
+method call time=1522274399.991551 sender=:1.44 -> destination=org.freedesktop.Notifications serial=28 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Simple Title"
+   string "web-push-book.gauntface.com
+
+Simple piece of body text.
+Second line of body text :)"
+   array [
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+   ]
+   int32 25000
+method call time=1522274403.289753 sender=:1.44 -> destination=org.freedesktop.Notifications serial=29 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Ice cream dragée croissant gingerbread topping carrot cake cookie biscuit macaroon. Chocolate bonbon sweet roll pastry. Croissant cake jelly-o halvah. Tootsie roll muffin croissant bear claw."
+   string "web-push-book.gauntface.com
+
+Lollipop cheesecake sesame snaps marshmallow chocolate bar. Pie fruitcake soufflé toffee lemon drops bonbon candy. Pie cupcake icing candy marzipan chocolate. Soufflé candy canes wafer. Tiramisu sweet roll brownie gummies sweet roll icing donut cake. Gummies croissant caramels pastry gingerbread dessert brownie gingerbread. Tiramisu carrot cake jujubes pie brownie sesame snaps."
+   array [
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+   ]
+   int32 25000
+signal time=1522274406.595834 sender=:1.206 -> destination=:1.44 serial=9 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 5
+   uint32 2
+signal time=1522274407.134477 sender=:1.206 -> destination=:1.44 serial=10 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 4
+   uint32 2
+signal time=1522274407.418293 sender=:1.206 -> destination=:1.44 serial=11 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 3
+   uint32 2
+method call time=1522274409.063544 sender=:1.44 -> destination=org.freedesktop.Notifications serial=30 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Icon Notification"
+   string "web-push-book.gauntface.com"
+   array [
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.IYI5At"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.IYI5At"
+      )
+   ]
+   int32 25000
+signal time=1522274435.298578 sender=:1.206 -> destination=:1.44 serial=13 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 6
+   uint32 1
+method call time=1522274517.832661 sender=:1.216 -> destination=:1.217 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274517.833696 sender=:1.216 -> destination=:1.217 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+signal time=1522274521.026637 sender=:1.217 -> destination=:1.216 serial=5 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 2
+   uint32 2
+method call time=1522274523.431928 sender=:1.44 -> destination=org.freedesktop.Notifications serial=31 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "0"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.CUnxkr"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.CUnxkr"
+      )
+   ]
+   int32 25000
+method call time=1522274536.430066 sender=:1.220 -> destination=:1.222 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274536.431727 sender=:1.220 -> destination=:1.222 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+signal time=1522274537.721664 sender=:1.222 -> destination=:1.220 serial=5 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 2
+   uint32 2
+method call time=1522274541.089208 sender=:1.44 -> destination=org.freedesktop.Notifications serial=32 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 3
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "1"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.ZWzaw5"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.ZWzaw5"
+      )
+   ]
+   int32 25000
+signal time=1522274545.105688 sender=:1.222 -> destination=:1.44 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 3
+   uint32 2
+method call time=1522274592.383428 sender=:1.225 -> destination=:1.226 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274592.384449 sender=:1.225 -> destination=:1.226 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274592.391674 sender=:1.227 -> destination=:1.226 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274592.518770 sender=:1.227 -> destination=:1.226 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274599.017754 sender=:1.44 -> destination=org.freedesktop.Notifications serial=33 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "0"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.F8xLMu"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.F8xLMu"
+      )
+   ]
+   int32 25000
+method call time=1522274610.169485 sender=:1.231 -> destination=:1.233 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274610.169937 sender=:1.231 -> destination=:1.233 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274610.178153 sender=:1.234 -> destination=:1.233 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274610.220729 sender=:1.234 -> destination=:1.233 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274616.663949 sender=:1.44 -> destination=org.freedesktop.Notifications serial=34 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 2
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "1"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.YR6LvR"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.YR6LvR"
+      )
+   ]
+   int32 25000
+signal time=1522274629.190668 sender=:1.236 -> destination=:1.44 serial=4 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 2
+   uint32 2
+method call time=1522274631.604671 sender=:1.238 -> destination=:1.240 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274631.605232 sender=:1.238 -> destination=:1.240 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274631.622422 sender=:1.241 -> destination=:1.240 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274631.654896 sender=:1.241 -> destination=:1.240 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274638.898462 sender=:1.44 -> destination=org.freedesktop.Notifications serial=35 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "Chromium"
+   uint32 0
+   string "file:///tmp/.org.chromium.Chromium.t6zzgK"
+   string "Web Push Book"
+   string "web-push-book.gauntface.com
+
+This would be the body text of the notification.
+It can hold two lines of text."
+   array [
+      string "0"
+      string "Download Book"
+      string "default"
+      string "Activate"
+      string "settings"
+      string "Settings"
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             uint32 1
+      )
+      dict entry(
+         string "desktop-entry"
+         variant             string "chromium-browser"
+      )
+      dict entry(
+         string "image_path"
+         variant             string "/tmp/.org.chromium.Chromium.KMAOiW"
+      )
+      dict entry(
+         string "image-path"
+         variant             string "/tmp/.org.chromium.Chromium.KMAOiW"
+      )
+   ]
+   int32 25000
+signal time=1522274641.719914 sender=:1.243 -> destination=:1.44 serial=4 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=NotificationClosed
+   uint32 2
+   uint32 2
+method call time=1522274855.079465 sender=:1.244 -> destination=:1.247 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274855.079961 sender=:1.244 -> destination=:1.247 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
+method call time=1522274856.053116 sender=:1.248 -> destination=:1.247 serial=6 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=GetServerInformation
+method call time=1522274856.053514 sender=:1.248 -> destination=:1.247 serial=7 path=/org/freedesktop/Notifications; interface=org.freedesktop.Notifications; member=Notify
+   string "notify-send"
+   uint32 0
+   string "/home/jlndk/.config/i3/icons/font-awesome/white/png/64/check.png"
+   string "Dunst is now running"
+   string "Notifications will now be showed"
+   array [
+   ]
+   array [
+      dict entry(
+         string "urgency"
+         variant             byte 1
+      )
+   ]
+   int32 -1
