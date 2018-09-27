@@ -7,13 +7,6 @@ set $mod Mod4
 ################################################################################
 ## APPERANCE
 ################################################################################
-#Hide side bars
-hide_edge_borders both
-
-#Hide title (top) bar
-for_window [class="^.*"] border pixel 1
-new_window 1pixel
-
 set $bg-color            #313131
 set $inactive-bg-color   #313131
 set $text-color          #FFFFFF
@@ -27,6 +20,13 @@ client.focused          $bg-color           $bg-color           $text-color     
 client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator-color
 client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator-color
 client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color           $indicator-color
+
+#Hide side bars
+hide_edge_borders both
+
+#Hide title (top) bar
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
 
 ################################################################################
 ## FONTS
@@ -69,7 +69,7 @@ exec_always --no-startup-id numlockx on
 exec --no-startup-id compton --config ~/.config/compton/config
 
 #Power manager
-#exec xfce4-power-manager
+exec xfce4-power-manager
 
 #Notification manager
 exec_always --no-startup-id $HOME/.config/dunst/launch.sh
@@ -123,7 +123,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # lock
-bindsym $mod+l exec /home/jlndk/.xlock/i3lock.sh
+bindsym $mod+l exec gnome-screensaver-command -l
 
 ################################################################################
 ## HARDWARE KEYBINDINGS
@@ -227,9 +227,13 @@ bindcode $mod+Shift+80 exec /home/jlndk/.config/i3/scripts/workspacemng.py move 
 bindcode $mod+Shift+81 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace9
 bindcode $mod+Shift+90 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace10
 
-workspace 1a output HDMI-0
-workspace 1b output DVI-D-0
-workspace 1c output DVI-I-0
+set_from_resource $monitor1 i3wm.monitor1 HDMI-0
+set_from_resource $monitor2 i3wm.monitor2 DVI-D-0
+set_from_resource $monitor3 i3wm.monitor2 DVI-I-0
+
+workspace 1a output $monitor1
+workspace 1b output $monitor2
+workspace 1b output $monitor3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -17,7 +17,7 @@ monitor = ${env:MONITOR}
 inherit=section/base
 
 modules-left = i3
-modules-right = volume wired-network date clock cpu temperature powermenu
+modules-right = volume wireless-network wired-network battery date clock cpu temperature powermenu
 
 [bar/secondary]
 monitor = ${env:MONITOR}
@@ -40,9 +40,9 @@ date = %%{F#999}%a. %e. %b. %Y %%{F-}
 [module/battery]
 type = internal/battery
 
-label-full = %percentage%
+label-full = %{F#999}%percentage%%{F--}
 
-label-charging = %percentage%%
+label-charging =  %{F#999}%percentage%%%{F--}
 
 format-discharging = <ramp-capacity><label-discharging>
 label-discharging = %percentage%% %{F#999}(%time%)%{F-}
@@ -117,7 +117,7 @@ ramp-headphones-1 = 
 
 [module/wireless-network]
 type = internal/network
-interface = wlp3s0
+interface = ${env:WIRELESS_NETWORK_INTERFACE}
 
 ; Available tokens:
 ;   %ifname%    [wireless+wired]
@@ -128,12 +128,33 @@ interface = wlp3s0
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
-label-connected = %essid% %signal%
-format-connected = <label-connected>
+label-connected = %{F#999}%essid% (%signal%)%{F-}
+format-connected = <ramp-signal><label-connected>
+
+; Only applies if <ramp-signal> is used
+;ramp-signal-0 =
+;ramp-signal-1 =
+;ramp-signal-2 =
+;ramp-signal-3 =
+
+ramp-signal-0 =
+ramp-signal-1 =
+ramp-signal-2 =
+ramp-signal-3 =
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected =  Not Connected
+label-disconnected-foreground = #999
 
 [module/wired-network]
 type = internal/network
-interface = enp6s0
+interface = ${env:WIRED_NETWORK_INTERFACE}
 
 label-connected =  %{F#999}%local_ip%%{F-}
 label-disconnected = %{F#999}% Not connected%{F-}
