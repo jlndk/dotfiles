@@ -42,7 +42,8 @@ font pango:Noto Sans 11
 ## PROGRAMS
 ################################################################################
 # Chromium browser
-bindsym $mod+Return exec chromium-browser
+#bindsym $mod+Return exec chromium-browser
+bindsym $mod+Return exec brave-browser
 
 # Nautilus (File Manager)
 bindsym $mod+Ctrl+Return exec nautilus
