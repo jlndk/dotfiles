@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:/opt/processing-3.4:$PATH
+export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:/opt/processing-3.4:/opt/idea/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jlndk/.oh-my-zsh"
@@ -101,6 +101,18 @@ alias doc="docker-compose"
 
 alias zafepay="cd '/home/jlndk/Development/Main Projects/zafepay'"
 
+alias gp="git pull"
+alias ga="git add -A"
+alias gc="git commit"
+alias gpu="git push"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias wip="git add . && git commit -m 'wip'"
+alias nah="git reset --hard && git clean -df"
+alias p="phpunit"
+alias pf="phpunit --filter "
+alias art="php artisan"
+alias migrate="php artisan migrate"
+alias _='sudo'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 
