@@ -72,7 +72,7 @@ exec_always /home/jlndk/.config/i3/scripts/fix-screens.sh
 exec_always --no-startup-id numlockx on
 
 #Compositor (Fixes transparancy and blur)
-exec --no-startup-id compton --config ~/.config/compton/config
+exec_always --no-startup-id killall compton; compton --config ~/.config/compton/config
 
 #Power manager
 exec xfce4-power-manager
