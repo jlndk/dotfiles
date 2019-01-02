@@ -37,7 +37,7 @@ for_window [class="^Brave"] border pixel 1
 ## FONTS
 ################################################################################
 #The main font for the entire WM
-font pango:Noto Sans 11
+font pango:Fira Sans 12
 
 ################################################################################
 ## PROGRAMS

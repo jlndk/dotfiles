@@ -3,7 +3,7 @@
 *monitor3: HDMI-1-2
 *backgroundPath: /home/jlndk/Pictures/Wallpapers/2.jpg
 
-URxvt.font: xft:Noto Mono:size=12
+URxvt.font: xft:Fira Code:size=12
 
 URxvt*background:                     #313131
 URxvt*foreground:                     #ffffff

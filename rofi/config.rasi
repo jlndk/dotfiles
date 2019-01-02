@@ -2,7 +2,7 @@
 configuration {
     /* fullscreen: true; */
 	sidebar-mode: true;
-    font: "Noto Sans Regular 20";
+    font: "Fira Sans Regular 20";
 
     theme: "jlndk1";
 
