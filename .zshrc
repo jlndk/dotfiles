@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:/opt/processing-3.4:/opt/idea/bin:$PATH
 
+#Add custom classpath for java
+export CLASSPATH=$CLASSPATH:~/javaclasses/algs4.jar
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jlndk/.oh-my-zsh"
 
@@ -94,12 +97,14 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
 alias zshconfig="gedit ~/.zshrc"
 alias ohmyzsh="gedit ~/.oh-my-zsh"
+
 alias doc="docker-compose"
 
 alias zafepay="cd '/home/jlndk/Development/Main Projects/zafepay'"
+
+alias py3="python3"
 
 alias gp="git pull"
 alias ga="git add -A"
