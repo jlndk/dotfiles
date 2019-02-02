@@ -103,8 +103,10 @@ alias ohmyzsh="gedit ~/.oh-my-zsh"
 alias doc="docker-compose"
 
 alias zafepay="cd '/home/jlndk/Development/Main Projects/zafepay'"
+alias itu="cd '/home/jlndk/Documents/ITU'"
 
 alias py3="python3"
+alias gw="./gradlew"
 
 alias gp="git pull"
 alias ga="git add -A"
@@ -118,6 +120,8 @@ alias pf="./vendor/bin/phpunit --filter "
 alias art="php artisan"
 alias migrate="php artisan migrate"
 alias _='sudo'
+
+eval $(thefuck --alias oh)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 
