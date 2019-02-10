@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:/opt/processing-3.4:/opt/idea/bin:$PATH
+export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:/opt/processing-3.4:/opt/idea/bin:~/gits/spark-installer:$PATH
 
 #Add custom classpath for java
 export CLASSPATH=$CLASSPATH:~/javaclasses/algs4.jar
