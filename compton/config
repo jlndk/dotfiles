@@ -3,6 +3,8 @@ paint-on-overlay = true; # These 3 can improve performance, work well in most ca
 glx-no-stencil = true;
 glx-no-rebind-pixmap = true;
 vsync = "opengl-swc"; # Enables one of the vsync methods. Check here for more info: https://github.com/chjj/compton/wiki/vsync-guide
+detect-rounded-corners = true;
+etect-client-opacity = true;
 
 # Shadow
 shadow = false;
@@ -31,4 +33,5 @@ blur-background = true;
 #blur-kern = "3x3box";
 blur-kern = "15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
 blur-method = "kawase";
-blur-strength = 15;
+blur-strength = 20;
+blur-background-fixed = false;
