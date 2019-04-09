@@ -23,7 +23,10 @@ modules-right = volume wireless-network wired-network battery date clock cpu tem
 monitor = ${env:MONITOR}
 inherit=section/base
 
+padding-right = 2
+
 modules-left = i3
+modules-right=volume date clock
 
 [module/clock]
 type = internal/date
