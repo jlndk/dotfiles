@@ -59,8 +59,6 @@
 #sidebar {
     border: 2px 0px 0px 0px;
     padding: 10px;
-
-    
 }
 
 #button selected {
@@ -81,7 +79,7 @@
 
 #mainbox {
     expand: false;
-    background-color: #000000dd;
+    background-color: #15191edd;
     spacing: 1em;
 }
 

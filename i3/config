@@ -7,8 +7,8 @@ set $mod Mod4
 ################################################################################
 ## APPERANCE
 ################################################################################
-set $bg-color            #313131
-set $inactive-bg-color   #313131
+set $bg-color            #20262c
+set $inactive-bg-color   #20262c
 set $text-color          #FFFFFF
 set $inactive-text-color #777777
 set $urgent-bg-color     #E53935
