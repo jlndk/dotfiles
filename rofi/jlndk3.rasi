@@ -1,0 +1,61 @@
+/* vim:ft=css */
+#window {
+    fullscreen: true;
+    border:  0px 0px 0px 0px;
+    background-color: hsla(210, 30%, 10%, 0.5);
+}
+
+#mainbox {
+    border:  0;
+    padding: 0;
+    background-color: transparent;
+    margin: 25% 30%;
+}
+
+#inputbar {
+    orientation: vertical;
+    background-color: transparent;
+    children:   [ promtContainer, entry];
+}
+
+#promtContainer {
+    orientation: horizontal;
+    background-color: transparent;
+    children:   [ dummy, prompt, dummy];
+}
+
+#dummy {
+    background-color: transparent;
+}
+
+#prompt {
+    background-color: transparent;
+    color: white;
+    font: "Fira Sans Light 50";
+}
+
+#entry {
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    font: "Fira Sans Regular 25";
+}
+
+#listview {
+    background-color: transparent;
+}
+
+#element {
+    background-color: transparent;
+    font: "Fira Sans Light 27";
+    padding: 5px 10px;
+    color: white;
+}
+
+#element selected {
+    background-color: hsla(210, 90%, 90%, 0.2);
+}
+
+#textbox {
+    background-color: red;
+}

@@ -1,10 +1,10 @@
 /* vim:ft=css */
 configuration {
     /* fullscreen: true; */
-	sidebar-mode: true;
+	sidebar-mode: false;
     font: "Fira Sans Regular 20";
 
-    theme: "jlndk1";
+    theme: "jlndk3";
 
 	combi-hide-mode-prefix: false;
     show-icons: true;
