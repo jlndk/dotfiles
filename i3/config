@@ -7,12 +7,12 @@ set $mod Mod4
 ################################################################################
 ## APPERANCE
 ################################################################################
-set $bg-color            #20262c
-set $inactive-bg-color   #20262c
-set $text-color          #FFFFFF
+set $bg-color            #20262cad
+set $inactive-bg-color   #20262cad
+set $text-color          #f0f2f5
 set $inactive-text-color #777777
-set $urgent-bg-color     #E53935
-set $indicator-color     #00ff00
+set $urgent-bg-color     #E53935cc
+set $indicator-color     #00ff00cc
 
 # window colors
 #                       border              background          text                  indicator
@@ -24,10 +24,10 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 #Hide side bars
 hide_edge_borders both
 
-#Show top bar by default, except for certain programs
+# #Show top bar by default, except for certain programs
 for_window [class="^.*"] border normal
 new_window 1pixel
-#These are the exceptions
+# #These are the exceptions
 for_window [class="^Atom"] border pixel 1
 for_window [class="^Chromium"] border pixel 1
 for_window [class="^Brave"] border pixel 1

@@ -4,13 +4,9 @@ glx-no-stencil = true;
 glx-no-rebind-pixmap = true;
 vsync = "opengl-swc"; # Enables one of the vsync methods. Check here for more info: https://github.com/chjj/compton/wiki/vsync-guide
 detect-rounded-corners = true;
-etect-client-opacity = true;
 
 # Shadow
 shadow = false;
-
-# Due to how compton draws shadows, some apps will have "glitchy" shadows. I've added all problem apps I ran into here.
-#"! name~=''" excludes shadows on "unkown" windows, which fixes a shadow glitch with XFWM's alt tab switcher.
 
 # Fading
 fading = true; # Fade windows during opacity changes.
@@ -29,9 +25,14 @@ wintypes:
   tooltip = { fade = true; shadow = false; };
 };
 
+opacity-rule = [
+    "90:class_g = 'Atom'"
+]
+
+# Blur
 blur-background = true;
-#blur-kern = "3x3box";
-blur-kern = "15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
+blur-kern = "3x3box";
+#blur-kern = "15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
 blur-method = "kawase";
-blur-strength = 8;
+blur-strength = 15;
 blur-background-fixed = false;
