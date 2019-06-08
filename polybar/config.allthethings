@@ -21,8 +21,7 @@ monitor = ${env:MONITOR}
 inherit=section/base
 
 modules-left = i3
-modules-center = clock
-modules-right = volume wireless-network wired-network battery powermenu
+modules-right = volume wireless-network wired-network battery date clock cpu temperature powermenu
 
 [bar/secondary]
 monitor = ${env:MONITOR}
@@ -31,21 +30,29 @@ inherit=section/base
 padding-right = 2
 
 modules-left = i3
-modules-right=volume clock
+modules-right=volume date clock
 
 [module/clock]
 type = internal/date
 interval = 1
-label =%time%
-time = %%{F#DDD}%H:%M:%S%%{F-}
+label =  %time%
+time = %%{F#999}%H:%M:%S%%{F-}
+
+[module/date]
+type = internal/date
+interval = 1
+label =  %date%
+date = %%{F#999}%a. %e. %b. %Y %%{F-}
 
 [module/battery]
 type = internal/battery
 
-label-full =
-label-charging =
+label-full = %{F#999}%percentage%%{F--}
 
-format-discharging = <ramp-capacity>
+label-charging =  %{F#999}%percentage%%%{F--}
+
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging = %percentage%% %{F#999}(%time%)%{F-}
 
 ramp-capacity-0 =
 ramp-capacity-1 =
@@ -75,7 +82,7 @@ label-urgent-padding = 3
 [module/powermenu]
 type = custom/menu
 
-format-padding = 4
+format-padding = 1
 
 label-open = 
 label-close = 
@@ -93,20 +100,43 @@ master-soundcard = default
 speaker-soundcard = default
 headphone-soundcard = default
 
+; Name of the master mixer
 master-mixer = Master
 
-format-volume =<ramp-volume>
-label-muted =%{F#999}%{F-}
+format-volume =<ramp-volume><label-volume>
 
+label-volume =%{F#999}%percentage%%%{F-}
+
+label-muted =  %percentage%%
+label-muted-foreground = #66
+
+; Only applies if <ramp-volume> is used
 ramp-volume-0 =
 ramp-volume-1 =
 ramp-volume-2 =
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = 
+ramp-headphones-1 = 
 
 [module/wireless-network]
 type = internal/network
 interface = ${env:WIRELESS_NETWORK_INTERFACE}
 
-format-connected = <ramp-signal>
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+label-connected = %{F#999}%essid% (%signal%)%{F-}
+format-connected = <ramp-signal><label-connected>
 
 ; Only applies if <ramp-signal> is used
 ;ramp-signal-0 =
@@ -126,14 +156,39 @@ format-disconnected = <label-disconnected>
 ; Available tokens:
 ;   %ifname%    [wireless+wired]
 ; Default: (none)
-label-disconnected = 
+label-disconnected =  Not Connected
 label-disconnected-foreground = #999
 
 [module/wired-network]
 type = internal/network
 interface = ${env:WIRED_NETWORK_INTERFACE}
 
-label-connected = 
-label-disconnected = %{F#999}%%{F-}
+label-connected =  %{F#999}%local_ip%%{F-}
+label-disconnected = %{F#999}% Not connected%{F-}
+
+[module/cpu]
+type = internal/cpu
+
+label =  %{F#999}%percentage%%%{F-}
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+format = <ramp><label>
+label = %{F#999}%temperature%%{F-}
+
+ramp-0 =
+ramp-1 =
+ramp-2 =
+ramp-3 =
+ramp-4 =
 
 ; vim:ft=dosini

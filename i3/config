@@ -74,6 +74,9 @@ exec_always --no-startup-id numlockx on
 #Compositor (Fixes transparancy and blur)
 exec_always --no-startup-id killall compton; compton --config ~/.config/compton/config
 
+#Conky (Information pane on desktop)
+exec_always --no-startup-id killall conky; conky
+
 #Power manager
 exec xfce4-power-manager
 
