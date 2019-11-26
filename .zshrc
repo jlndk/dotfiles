@@ -120,6 +120,11 @@ alias pf="./vendor/bin/phpunit --filter "
 alias art="php artisan"
 alias migrate="php artisan migrate"
 alias _='sudo'
+alias please='sudo'
+alias kms='please shutdown now'
+
+alias dntc='dotnet test /p:CollectCoverage=true'
+alias dnt='dotnet test'
 
 eval $(thefuck --alias oh)
 
