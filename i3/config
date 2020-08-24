@@ -6,15 +6,20 @@ set $mod Mod4
 # The program that acts as a lock screen
 set $Locker gnome-screensaver-command -l
 
+set $gaps-inner 15
+set $gaps-outer 5
+
 ################################################################################
 ## APPERANCE
 ################################################################################
-set $bg-color            #20262cad
-set $inactive-bg-color   #20262cad
+# set $bg-color            #20262cad
+set $bg-color		 #1c1e26
+set $inactive-bg-color   #1c1e26
+# set $inactive-bg-color   #20262cad
 set $text-color          #f0f2f5
 set $inactive-text-color #777777
 set $urgent-bg-color     #E53935cc
-set $indicator-color     #00ff00cc
+set $indicator-color     #68D391cc
 
 # window colors
 #                       border              background          text                  indicator
@@ -26,20 +31,30 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 #Hide side bars
 hide_edge_borders both
 
+gaps inner $gaps-inner
+gaps outer $gaps-outer
+
 # #Show top bar by default, except for certain programs
-for_window [class="^.*"] border normal
-new_window 1pixel
+#for_window [class="^.*"] border normal
+#new_window 1pixel
 # #These are the exceptions
-for_window [class="^Atom"] border pixel 1
-for_window [class="^Chromium"] border pixel 1
-for_window [class="^Brave"] border pixel 1
+#for_window [class="^Atom"] border pixel 1
+#for_window [class="^Chromium"] border pixel 1
+#for_window [class="^Brave"] border pixel 1
 #for_window [class="^Gnome-terminal"] border pixel 1
+
+# Disable top bar for all window, since we got gaps
+for_window[class="^.*"] border pixel 1
+
+# Make some windows floating by default
+for_window [title="Microsoft Teams Notification"] floating enable
+
 
 ################################################################################
 ## FONTS
 ################################################################################
 #The main font for the entire WM
-font pango:Fira Sans 12
+font pango:JetBrains Mono 12
 
 ################################################################################
 ## PROGRAMS
@@ -50,10 +65,16 @@ bindsym $mod+Return exec brave-browser
 
 # Nautilus (File Manager)
 bindsym $mod+Ctrl+Return exec nautilus
+#bindsym $mod+Ctrl+Return exec dolphin
+#bindsym $mod+Ctrl+Return exec ranger
+#bindsym $mod+Ctrl+Return exec "urxvt -e bash -c ranger"
 
 # Terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal
 # bindsym $mod+Shift+Return exec urxvt
+
+# terminal from same dir
+bindsym $mod+Shift+Ctrl+Return exec urxvt -cd `xdotool getactivewindow getwindowname | cut -d ":" -f 2 | sed -e 's@~@'"$HOME"'@'`
 
 # Rofi (alternative to dmenu)
 bindsym $mod+d exec "rofi -show combi -config ~/.config/rofi/config.rasi"
@@ -62,8 +83,8 @@ bindsym $mod+d exec "rofi -show combi -config ~/.config/rofi/config.rasi"
 ## AUTOSTART
 ################################################################################
 #Fix trackpad
-exec_always --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113 HorizTwoFingerScroll=1 HorisScrollDelta=-113
-
+#exec_always --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113 HorizTwoFingerScroll=1 HorisScrollDelta=-113
+exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5
 #Fix nautilus (File manager)
 exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 
@@ -135,6 +156,16 @@ bindsym $mod+a focus parent
 
 # lock
 bindsym $mod+l exec --no-startup-id $Locker, mode "default"
+
+#
+# GAPS
+#
+bindsym $mod+plus  gaps outer all plus 5
+bindsym $mod+minus gaps outer all minus 5
+bindsym $mod+shift+plus gaps inner all plus 5
+bindsym $mod+shift+minus gaps inner all minus 5
+bindsym $mod+c gaps outer all set 0; gaps inner all set 0
+bindsym $mod+shift+c gaps outer all set $gaps-outer; gaps inner all set $gaps-inner
 
 ################################################################################
 ## HARDWARE KEYBINDINGS
@@ -232,7 +263,7 @@ workspace 1b output $monitor2
 workspace 1c output $monitor3
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)

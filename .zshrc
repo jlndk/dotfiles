@@ -126,7 +126,13 @@ alias kms='please shutdown now'
 alias dntc='dotnet test /p:CollectCoverage=true'
 alias dnt='dotnet test'
 
+alias fis='dotnet fsi'
+
 eval $(thefuck --alias oh)
+
+cdpath=(~/ITU ~/Development/Main\ Projects)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 
+
+source /home/jlndk/.config/broot/launcher/bash/br
