@@ -4,7 +4,7 @@ foreground = #EDF2F7
 secondary = #718096
 
 [section/base]
-width = 100%:-20
+width = 100%
 height = 55
 
 background=${colors.background}
