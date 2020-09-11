@@ -2,7 +2,8 @@
 configuration {
     /* fullscreen: true; */
 	sidebar-mode: false;
-    font: "Fira Sans Regular 20";
+    /*font: "Fira Sans Regular 20";*/
+    font: "JetBrains Mono 20";
 
     theme: "jlndk3";
 

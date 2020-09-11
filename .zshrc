@@ -1,8 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:/opt/processing-3.4:/opt/idea/bin:~/gits/spark-installer:$PATH
-
-#Add custom classpath for java
-export CLASSPATH=$CLASSPATH:~/javaclasses/algs4.jar
+export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jlndk/.oh-my-zsh"
@@ -92,6 +89,9 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Opt out of dotnet telemetry
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -126,7 +126,12 @@ alias kms='please shutdown now'
 alias dntc='dotnet test /p:CollectCoverage=true'
 alias dnt='dotnet test'
 
+alias fis='dotnet fsi'
+alias fsi='dotnet fsi'
+
 eval $(thefuck --alias oh)
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
+cdpath=(~/ITU ~/Development/Main\ Projects)
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
+DOTNET_CLI_TELEMETRY_OPTOUT=true
