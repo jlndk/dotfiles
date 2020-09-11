@@ -1,61 +1,78 @@
 [colors]
-background = #1A202C
-foreground = #EDF2F7
-secondary = #718096
+background = #090F1B
+foreground = #ffffff
 
 [section/base]
-width = 100%:-20
-height = 55
-
 override-redirect = true
 wm-restack = i3
 
-background=${colors.background}
-foreground =${colors.foreground}
+width=100%:-20
+height = 55
 
 offset-y=10
 offset-x=10
 
-radius = 15
+background=${colors.background}
+foreground =${colors.foreground}
 
-spacing = 2
 module-margin = 2
 padding=2
+spacing = 2
 
 font-0 = Jetbrains-Mono-Regular:size=12;0
 font-1 = FontAwesome:size=15;0
+radius = 15
 
-tray-background=#00000000
+[bar/filler]
+monitor = ${env:MONITOR}
+width=100%
+height = 75
+background = #00000000
+foreground = #00000000
+override-redirect = false
+modules-center = blank
 
-[bar/primary]
+[bar/topleft]
 monitor = ${env:MONITOR}
 inherit=section/base
 
+width = 525
+
 modules-left = i3
+
+[bar/topright]
+monitor = ${env:MONITOR}
+inherit=section/base
+
+width = 510
+offset-x = 100%:-520
+
 modules-right = volume wireless-network wired-network battery date clock powermenu
 
 [bar/secondary]
 monitor = ${env:MONITOR}
 inherit=section/base
 
+padding-right = 2
+
 modules-left = i3
 modules-right=volume date clock
+
+[module/blank]
+type = custom/text
+content = ""
 
 [module/clock]
 type = internal/date
 interval = 1
-format =  <label>
-label =%time%
-label-foreground = ${colors.secondary}
-time = %H:%M:%S
+label =  %time%
+time = %%{F#999}%H:%M:%S%%{F-}
 
 [module/date]
 type = internal/date
 interval = 1
-format =  <label>
-label =%date%
-label-foreground = ${colors.secondary}
-date =%a. %e. %b.
+label =  %date%
+date = %%{F#999}%a. %e. %b. %%{F-}
 
 [module/battery]
 type = internal/battery
@@ -85,11 +102,10 @@ pin-workspaces = true
 label-visible-padding = 2
 
 label-focused-padding = 2
-label-focused-foreground = ${colors.foreground}
+label-focused-foreground = #fff
 
-label-unfocused = %icon%  %name%
+label-unfocused = %{F#999}%icon%  %name%%{F-}
 label-unfocused-padding = 2
-label-unfocused-foreground = ${colors.secondary}
 
 label-urgent-padding = 2
 
@@ -106,7 +122,7 @@ menu-0-0-foreground = #ff0000
 menu-0-0-exec = shutdown -h now
 
 [module/volume]
-type = internal/alsa
+type = internal/volume
 
 ; Soundcard to be used
 ; Usually in the format hw:#23
@@ -119,18 +135,15 @@ master-mixer = Master
 
 format-volume =<ramp-volume><label-volume>
 
-label-volume = %percentage%%
-label-volume-foreground=${colors.secondary}
+label-volume =%{F#999}%percentage%%%{F-}
 
 label-muted =  %percentage%%
-label-muted-foreground = ${colors.secondary}
+label-muted-foreground = #66
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 =
 ramp-volume-1 =
 ramp-volume-2 =
-
-ramp-volume-foreground = ${colors.foreground}
 
 ; If defined, it will replace <ramp-volume> when
 ; headphones are plugged in to `headphone_control_numid`
@@ -138,7 +151,6 @@ ramp-volume-foreground = ${colors.foreground}
 ; Only applies if <ramp-volume> is used
 ramp-headphones-0 = 
 ramp-headphones-1 = 
-ramp-headphones-foreground = ${colors.foreground}
 
 [module/wireless-network]
 type = internal/network
@@ -181,13 +193,8 @@ label-disconnected-foreground = #999
 type = internal/network
 interface = ${env:WIRED_NETWORK_INTERFACE}
 
-format-connected =  <label-connected>
-label-connected = %local_ip%
-label-connected-foreground = ${colors.secondary}
-
-format-disconnected =  <label-disconnected>
-label-disconnected = Not connected
-label-disconnected-foreground = ${colors.secondary}
+label-connected =  %{F#999}%local_ip%%{F-}
+label-disconnected = %{F#999}% Not connected%{F-}
 
 [module/cpu]
 type = internal/cpu

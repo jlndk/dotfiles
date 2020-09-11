@@ -14,7 +14,7 @@ export WIRELESS_NETWORK_INTERFACE=wlp3s0
 export WIRED_NETWORK_INTERFACE=enp6s0
 
 # Launch all bars
-MONITOR=$MONITOR1 polybar top &
+MONITOR=$MONITOR1 polybar primary &
 MONITOR=$MONITOR2 polybar secondary &
 MONITOR=$MONITOR3 polybar secondary &
 

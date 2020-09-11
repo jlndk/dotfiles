@@ -125,3 +125,5 @@ eval $(thefuck --alias oh)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 
+
+source /home/jlndk/.config/broot/launcher/bash/br

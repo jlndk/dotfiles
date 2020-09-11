@@ -2,19 +2,45 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+################################################################################
+## VARIABLES
+################################################################################
+# Define mod key (most commonly super or alt)
 set $mod Mod4
+
 # The program that acts as a lock screen
 set $Locker gnome-screensaver-command -l
 
-################################################################################
-## APPERANCE
-################################################################################
-set $bg-color            #20262cad
-set $inactive-bg-color   #20262cad
+# Get current monitor configuration
+set_from_resource $monitor1 i3wm.monitor1
+set_from_resource $monitor2 i3wm.monitor2
+set_from_resource $monitor3 i3wm.monitor3
+
+#Variable names for all ten workspaces
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+
+# Colors
+set $bg-color            #1c1e26
+set $inactive-bg-color   #1c1e26
 set $text-color          #f0f2f5
 set $inactive-text-color #777777
 set $urgent-bg-color     #E53935cc
 set $indicator-color     #00ff00cc
+
+################################################################################
+## APPERANCE
+################################################################################
+#The main font for the entire WM
+font pango:Fira Sans 12
 
 # window colors
 #                       border              background          text                  indicator
@@ -26,26 +52,42 @@ client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color     
 #Hide side bars
 hide_edge_borders both
 
-# #Show top bar by default, except for certain programs
-for_window [class="^.*"] border normal
-new_window 1pixel
-# #These are the exceptions
-for_window [class="^Atom"] border pixel 1
-for_window [class="^Chromium"] border pixel 1
-for_window [class="^Brave"] border pixel 1
-#for_window [class="^Gnome-terminal"] border pixel 1
+for_window [class=".*"] border pixel 0
+# # #Show top bar by default, except for certain programs
+# for_window [class="^.*"] border normal
+# new_window 1pixel
+# # #These are the exceptions
+# for_window [class="^Atom"] border pixel 1
+# for_window [class="^Code"] border pixel 1
+# for_window [class="^Chromium"] border pixel 1
+# for_window [class="^Brave"] border pixel 1
+# for_window [class="^discord"] border pixel 1
+# #for_window [class="^Gnome-terminal"] border pixel 1
+
+gaps inner 10
+gaps top 65
+
+# smart_gaps off
 
 ################################################################################
-## FONTS
+## GENERAL KEYBINDINGS
 ################################################################################
-#The main font for the entire WM
-font pango:Fira Sans 12
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# lock
+bindsym $mod+l exec --no-startup-id $Locker, mode "default"
 
 ################################################################################
 ## PROGRAMS
 ################################################################################
 # Chromium browser
-#bindsym $mod+Return exec chromium-browser
 bindsym $mod+Return exec brave-browser
 
 # Nautilus (File Manager)
@@ -53,7 +95,6 @@ bindsym $mod+Ctrl+Return exec nautilus
 
 # Terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal
-# bindsym $mod+Shift+Return exec urxvt
 
 # Rofi (alternative to dmenu)
 bindsym $mod+d exec "rofi -show combi -config ~/.config/rofi/config.rasi"
@@ -70,8 +111,15 @@ exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 #Fix displays and wallpapers
 exec_always /home/jlndk/.config/i3/scripts/fix-screens.sh
 
+#exec dwall firewatch
+#exec dynbg firewatch
+exec sleep 3 && dynbg firewatch
+
 #Fix Num Lock
 exec_always --no-startup-id numlockx on
+
+#Polybar (taskbar)
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #Compositor (Fixes transparancy and blur)
 exec_always --no-startup-id killall compton; compton --config ~/.config/compton/config
@@ -128,53 +176,14 @@ bindsym $mod+q layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_togglebindsym $mod+Shift+Left move left
 
 # focus the parent container
 bindsym $mod+a focus parent
 
-# lock
-bindsym $mod+l exec --no-startup-id $Locker, mode "default"
-
-################################################################################
-## HARDWARE KEYBINDINGS
-################################################################################
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh up
-bindsym XF86AudioLowerVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh down
-bindsym XF86AudioMute exec /home/jlndk/.config/i3/scripts/volume-manager.sh mute
-
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec /home/jlndk/.config/i3/scripts/brightness-manager.sh up # increase screen brightness
-bindsym XF86MonBrightnessDown exec /home/jlndk/.config/i3/scripts/brightness-manager.sh down # decrease screen brightness
-
-# Touchpad controls
-bindsym XF86TouchpadToggle exec /home/jlndk/etc/toggletouchpad.sh # toggle touchpad
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-#Screenshot
-bindsym Print exec gnome-screenshot -i
-
 ################################################################################
 ## WORKSPACES
 ################################################################################
-#Variable names for all ten workspaces
-set $workspace1 "1"
-set $workspace2 "2"
-set $workspace3 "3"
-set $workspace4 "4"
-set $workspace5 "5"
-set $workspace6 "6"
-set $workspace7 "7"
-set $workspace8 "8"
-set $workspace9 "9"
-set $workspace10 "10"
-
 # Switch to workspace
 bindsym $mod+1 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace1
 bindsym $mod+2 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace2
@@ -223,33 +232,54 @@ bindcode $mod+Shift+80 exec /home/jlndk/.config/i3/scripts/workspacemng.py move 
 bindcode $mod+Shift+81 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace9
 bindcode $mod+Shift+90 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace10
 
-set_from_resource $monitor1 i3wm.monitor1
-set_from_resource $monitor2 i3wm.monitor2
-set_from_resource $monitor3 i3wm.monitor3
-
 workspace 1a output $monitor1
 workspace 1b output $monitor2
 workspace 1c output $monitor3
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+1 focus output $monitor1
+bindsym $mod+Ctrl+2 focus output $monitor2
+bindsym $mod+Ctrl+3 focus output $monitor3
 
+bindsym $mod+Ctrl+Left focus output left
+bindsym $mod+Ctrl+Right focus output right
+
+bindsym Ctrl+$mod+Mod1+Right move output right
+bindsym Ctrl+$mod+Mod1+Left move output left
+
+bindsym Ctrl+$mod+Mod1+1 move output $monitor1
+bindsym Ctrl+$mod+Mod1+2 move output $monitor2
+bindsym Ctrl+$mod+Mod1+3 move output $monitor3
+
+################################################################################
+## HARDWARE KEYBINDINGS
+################################################################################
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh up
+bindsym XF86AudioLowerVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh down
+bindsym XF86AudioMute exec /home/jlndk/.config/i3/scripts/volume-manager.sh mute
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec /home/jlndk/.config/i3/scripts/brightness-manager.sh up # increase screen brightness
+bindsym XF86MonBrightnessDown exec /home/jlndk/.config/i3/scripts/brightness-manager.sh down # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /home/jlndk/etc/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+#Screenshot
+bindsym Print exec gnome-screenshot -i
+
+################################################################################
+## MODES
+################################################################################
 # resize window (you can also use the mouse for that)
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym ae resize grow width 10 px or 10 ppt
 
     # same bindings, but for the arrow keys
     bindsym Left resize shrink width 10 px or 10 ppt
@@ -280,5 +310,14 @@ mode "$mode_system" {
 
 bindsym Pause mode "$mode_system"
 
+mode "move to monitor" {
+    bindsym 1 move container to output $monitor1; mode "default"
+    bindsym 2 move container to output $monitor2; mode "default"
+    bindsym 3 move container to output $monitor3; mode "default"
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+z mode "move to monitor"
