@@ -4,7 +4,8 @@
 
 set $mod Mod4
 # The program that acts as a lock screen
-set $Locker gnome-screensaver-command -l
+#set $Locker gnome-screensaver-command -l
+set $Locker i3lock
 
 set $gaps-inner 15
 set $gaps-outer 5
