@@ -14,8 +14,8 @@ spacing = 2
 module-margin = 2
 padding=2
 
-font-0 = JetBrains-Mono:size=12;0
-font-1 = Font Awesome 5 Free Solid:size=15;0
+font-0 = JetBrains-Mono:size=13:style=Medium;0
+font-1 = Font Awesome 5 Free:size=15:style=Solid;0
 
 tray-background=#00000000
 
@@ -52,12 +52,16 @@ date =%a. %e. %b.
 [module/battery]
 type = internal/battery
 
-label-full = %{F#999}%percentage%%{F--}
+label-full = percentage%%
+label-full-foreground = ${colors.secondary}
 
-label-charging =  %{F#999}%percentage%%%{F--}
+format-charging =  <label-charging>
+label-charging = %percentage%%
+label-charging-foreground = ${colors.secondary}
 
 format-discharging = <ramp-capacity><label-discharging>
-label-discharging = %percentage%% %{F#999}(%time%)%{F-}
+label-discharging = %percentage%%
+label-discharging-foreground = ${colors.secondary}
 
 ramp-capacity-0 =
 ramp-capacity-1 =
@@ -145,14 +149,9 @@ interface = ${env:WIRELESS_NETWORK_INTERFACE}
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
-label-connected = %{F#999}%essid% (%signal%)%{F-}
 format-connected = <ramp-signal><label-connected>
-
-; Only applies if <ramp-signal> is used
-;ramp-signal-0 =
-;ramp-signal-1 =
-;ramp-signal-2 =
-;ramp-signal-3 =
+label-connected = %essid%
+label-connected-foreground = ${colors.secondary}
 
 ramp-signal-0 =
 ramp-signal-1 =
@@ -167,7 +166,7 @@ format-disconnected = <label-disconnected>
 ;   %ifname%    [wireless+wired]
 ; Default: (none)
 label-disconnected =  Not Connected
-label-disconnected-foreground = #999
+label-disconnected-foreground = ${colors.secondary}
 
 [module/wired-network]
 type = internal/network
