@@ -41,6 +41,7 @@
     "git.decorations.enabled": false,
     "workbench.startupEditor": "none",
     "editor.lightbulb.enabled": false,
+    "editor.suggestSelection": "first",
     "editor.selectionHighlight": false,
     "editor.overviewRulerBorder": false,
     "editor.renderLineHighlight": "none",
@@ -71,7 +72,7 @@
     /**
     * Window Settings
     **/
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "window.menuBarVisibility": "toggle",
 
     /**
@@ -135,7 +136,7 @@
     "FSharp.useSdkScripts": true,
 
     /**
-    * Javascript / Prettier
+    * Javascript / Typescript (and packages)
     **/
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -143,10 +144,33 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "prettier.requireConfig": true,
     "prettier.useEditorConfig": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "eslint.packageManager": "yarn",
+
+    /**
+    * HTML
+    **/
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    /**
+    * MARKDOWN
+    **/
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+
+    /**
+    * JSON
+    **/
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 }
