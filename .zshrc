@@ -1,5 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/bin:$PATH
+
+export CLASSPATH=".:/usr/local/lib/antlr-4.9.1-complete.jar:$CLASSPATH"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jlndk/.oh-my-zsh"
@@ -129,9 +134,17 @@ alias dnt='dotnet test'
 alias fis='dotnet fsi'
 alias fsi='dotnet fsi'
 
+alias antlr4='java -jar /usr/local/lib/antlr-4.9.1-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
+
 eval $(thefuck --alias oh)
 
 cdpath=(~/ITU ~/Development/Main\ Projects)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 DOTNET_CLI_TELEMETRY_OPTOUT=true
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin

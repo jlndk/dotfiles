@@ -17,13 +17,7 @@
     "files.trimFinalNewlines": true,
     "telemetry.enableTelemetry": false,
     "editor.formatOnSave": true,
-
-    /**
-    * Hide Everything
-    */
-    "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "right",
-    "workbench.statusBar.visible": false,
     "workbench.editor.showTabs": false,
     "editor.renderIndentGuides": false,
     "editor.minimap.enabled": false,
@@ -68,11 +62,6 @@
     "editor.suggestLineHeight": 28,
     "terminal.integrated.fontSize": 15,
     "terminal.integrated.lineHeight": 1.5,
-
-    /**
-    * Window Settings
-    **/
-    "window.zoomLevel": 0,
     "window.menuBarVisibility": "toggle",
 
     /**
@@ -135,6 +124,10 @@
      */
     "FSharp.useSdkScripts": true,
 
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+    },
+
     /**
     * Javascript / Typescript (and packages)
     **/
@@ -173,4 +166,28 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "telemetry.enableCrashReporter": false,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "liveshare.authenticationProvider": "GitHub",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "workbench.activityBar.visible": false,
 }
