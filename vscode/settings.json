@@ -1,5 +1,4 @@
 {
-
     /**
     * Better Defaults
     **/
@@ -17,27 +16,23 @@
     "files.trimFinalNewlines": true,
     "telemetry.enableTelemetry": false,
     "editor.formatOnSave": true,
-
-    /**
-    * Hide Everything
-    */
-    "workbench.activityBar.visible": false,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
     "workbench.sideBar.location": "right",
-    "workbench.statusBar.visible": false,
     "workbench.editor.showTabs": false,
     "editor.renderIndentGuides": false,
     "editor.minimap.enabled": false,
-	"editor.lineNumbers": "on",
-
+    "editor.lineNumbers": "on",
     /**
     * Silence The Noise
     */
     "breadcrumbs.enabled": true,
-    "scm.diffDecorations": "none",
+    "scm.diffDecorations": "gutter",
     "editor.hover.enabled": true,
-    "editor.matchBrackets": "always",
+    "editor.matchBrackets": "near",
     "workbench.tips.enabled": false,
-    "editor.colorDecorators": false,
+    "editor.colorDecorators": true,
     "git.decorations.enabled": false,
     "workbench.startupEditor": "none",
     "editor.lightbulb.enabled": false,
@@ -51,10 +46,9 @@
     "editor.gotoLocation.multipleReferences": "goto",
     "editor.gotoLocation.multipleDefinitions": "goto",
     "editor.gotoLocation.multipleDeclarations": "goto",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.gotoLocation.multipleImplementations": "goto",
     "editor.gotoLocation.multipleTypeDefinitions": "goto",
-
+    "workbench.editor.enablePreviewFromQuickOpen": false,
     /**
     * Typography
     **/
@@ -67,42 +61,14 @@
     "editor.suggestLineHeight": 28,
     "terminal.integrated.fontSize": 15,
     "terminal.integrated.lineHeight": 1.5,
-
-    /**
-    * Window Settings
-    **/
-    "window.zoomLevel": 1,
     "window.menuBarVisibility": "toggle",
-
     /**
     * Find
     **/
-    "search.useIgnoreFiles": false,
-    "search.exclude": {
-        // Hide everything in /vendor, except the "laravel" and "livewire" folder.
-        "**/vendor/{[^l],?[^ai]}*": true,
-        // Hide everything in /public, except "index.php"
-        "**/public/{[^i],?[^n]}*": true,
-        // Hide node modules
-        "**/node_modules": true,
-        // Hide compiled assets
-        "**/dist": true,
-        "**/build": true,
-        // Hide code coverage
-        "**/coverage": true,
-        "**/_ide_helper.php": true,
-        "**/composer.lock": true,
-        "**/package-lock.json": true,
-        "**/yarn.lock": true,
-        "storage": true,
-        ".phpunit.result.cache": true
-    },
-
+    "search.useIgnoreFiles": true,
     /**
     * Code
     **/
-    // Include "-" in word selection.
-    "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
     "emmet.includeLanguages": {
         "blade": "html",
         "vue-html": "html",
@@ -117,7 +83,6 @@
     * PHP
     **/
     "php.suggest.basic": false,
-
     /**
     * PHP CS Fixer
     **/
@@ -128,12 +93,10 @@
     "php-cs-fixer.showOutput": false,
     "php-cs-fixer.autoFixByBracket": false,
     "php-cs-fixer.rules": "@PSR2",
-
     /**
      * F#
      */
     "FSharp.useSdkScripts": true,
-
     /**
     * Javascript / Prettier
     **/
@@ -146,7 +109,99 @@
     "prettier.requireConfig": true,
     "prettier.useEditorConfig": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
+    /**
+     * Markdown
+     */
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
+    /**
+     * HTML
+     */
+    "highlight-matching-tag.styles": {
+        "opening": {
+            "name": {
+                "highlight": "rgba(255,255,255,0.04)"
+            }
+        }
+    },
+    /**
+     * JSON
+     */
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "extensions.ignoreRecommendations": true,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+    "php-cs-fixer.lastDownload": 1628346425536,
+    "grammarly.hideUnavailablePremiumAlerts": true,
+    "grammarly.autoActivate": false,
+    "[dart]": {
+		// By default, VS Code prevents code completion from popping open when in
+		// "snippet mode" (editing placeholders in inserted code). Setting this option
+		// to `false` stops that and allows completion to open as normal, as if you
+		// weren't in a snippet placeholder.
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+
+		// By default, VS Code will pre-select the most recently used item from code
+		// completion. This is usually not the most relevant item.
+		//
+		// "first" will always select top item
+		// "recentlyUsedByPrefix" will filter the recently used items based on the
+		//     text immediately preceding where completion was invoked.
+		"editor.suggestSelection": "first",
+
+		// Allows pressing <TAB> to complete snippets such as `for` even when the
+		// completion list is not visible.
+		"editor.tabCompletion": "onlySnippets",
+
+		// By default, VS Code will populate code completion with words found in the
+		// current file when a language service does not provide its own completions.
+		// This results in code completion suggesting words when editing comments and
+		// strings. This setting will prevent that.
+		"editor.wordBasedSuggestions": false,
+    },
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "editor.suggestSelection": "first",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "markdown.extension.toc.levels": "2..2",
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "monorepoWorkspace.folders.regex.tools": "^tool|script|util|pulumi",
+    "monorepoWorkspace.folders.custom": [
+        { "regex":"pulumi", "prefix": "🛰️ " }
+    ],
+    "todo-tree.highlights.defaultHighlight": {
+        "type": "text",
+        "foreground": "#fff",
+        "background": "#414658",
+    },
+    "python.experiments.enabled": false,
+    "python.terminal.activateEnvironment": false,
+    "workbench.activityBar.visible": false,
+    "githd.blameView.enabled": false,
+    "githd.editor.disabled": true,
+    "window.zoomLevel": 1,
 }

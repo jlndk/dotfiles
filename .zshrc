@@ -1,8 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=$(yarn global bin):$HOME/bin:/usr/local/bin:$HOME/.config/composer/vendor/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jlndk/.oh-my-zsh"
+
+## Set java class path
+export CLASSPATH=".:/usr/local/lib/antlr-4.9-complete.jar:$CLASSPATH"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -114,8 +117,9 @@ alias gc="git commit"
 alias gpu="git push"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias wip="git add . && git commit -m 'wip'"
+alias whoops="wip && git push --no-verify"
 alias nah="git reset --hard && git clean -df"
-alias p="./vendor/bin/phpunit"
+alias pu="./vendor/bin/phpunit"
 alias pf="./vendor/bin/phpunit --filter "
 alias art="php artisan"
 alias migrate="php artisan migrate"
@@ -129,9 +133,23 @@ alias dnt='dotnet test'
 alias fis='dotnet fsi'
 alias fsi='dotnet fsi'
 
+alias kc='kubectl'
+
+alias gg='git_get'
+
+alias p='./pants'
+
 eval $(thefuck --alias oh)
 
 cdpath=(~/ITU ~/Development/Main\ Projects)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 DOTNET_CLI_TELEMETRY_OPTOUT=true
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export maindev="$HOME/Development/Main Projects/"
+export sidedev="$HOME/Development/Side Projects/"

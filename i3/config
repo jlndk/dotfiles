@@ -9,8 +9,8 @@
 set $mod Mod4
 
 # The program that acts as a lock screen
-#set $Locker gnome-screensaver-command -l
-set $Locker i3lock -c 1a202c
+set $Locker gnome-screensaver-command -l
+#set $Locker i3lock -c 1a202c
 
 set $gaps-inner 15
 set $gaps-outer 5
@@ -69,6 +69,8 @@ for_window[class="^.*"] border pixel 0
 # Make some windows floating by default
 for_window [title="Microsoft Teams Notification"] floating enable
 
+for_window [title="berry"] floating enable
+
 
 ################################################################################
 ## GENERAL KEYBINDINGS
@@ -119,7 +121,8 @@ bindsym $mod+d exec "rofi -show combi -config ~/.config/rofi/config.rasi"
 ################################################################################
 #Fix trackpad
 #exec_always --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113 HorizTwoFingerScroll=1 HorisScrollDelta=-113
-exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5
+#exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5
+exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5 HorizScrollDelta=-29
 #Fix nautilus (File manager)
 exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 
@@ -128,7 +131,7 @@ exec_always /home/jlndk/.config/i3/scripts/fix-screens.sh
 
 #exec dwall firewatch
 #exec dynbg firewatch
-exec sleep 3 && dynbg firewatch
+#exec sleep 3 && dynbg firewatch
 
 #Fix Num Lock
 exec_always --no-startup-id numlockx on
@@ -150,6 +153,9 @@ exec_always --no-startup-id $HOME/.config/dunst/launch.sh
 
 #Keyboard remapping
 exec_always --no-startup-id /opt/rmacro/rmacro
+
+#Fix gnome screensaver
+exec_always --no-startup-id gnome-screensaver
 
 ################################################################################
 ## WINDOW CONTROL
