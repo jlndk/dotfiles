@@ -333,6 +333,7 @@ exec_always --no-startup-id killall compton; compton -b --config ~/.config/compt
 
 #Conky (Information pane on desktop)
 #exec_always --no-startup-id killall conky; conky
+# exec_always --no-startup-id killall conky; start_conky_maia
 
 #Power manager
 exec --no-startup-id xfce4-power-manager
