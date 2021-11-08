@@ -1,5 +1,4 @@
 # i3 config file (v4)
-#
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 ################################################################################
@@ -9,11 +8,10 @@
 set $mod Mod4
 
 # The program that acts as a lock screen
-set $Locker gnome-screensaver-command -l
-#set $Locker i3lock -c 1a202c
+set $Locker blurlock
 
-set $gaps-inner 15
-set $gaps-outer 5
+set $gaps-inner 14
+set $gaps-outer -2
 
 # Get current monitor configuration
 set_from_resource $monitor1 i3wm.monitor1
@@ -32,15 +30,35 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10"
 
-################################################################################
-## APPERANCE
-################################################################################
 set $bg-color		     #1c1e26
 set $inactive-bg-color   #1c1e26
-set $text-color          #f0f2f5
-set $inactive-text-color #777777
+set $text-color          #EDF2F7
+set $inactive-text-color #718096
 set $urgent-bg-color     #E53935cc
 set $indicator-color     #68D391cc
+
+#
+# Bar
+#
+set $bar-bg-color #1c1e26
+set $bar-text-color #b8bec6
+set $bar-seperator-color #3f4855
+# Focused workspace selector
+set $bar-ws-focused-bg-color #636c8c
+set $bar-ws-focused-text-color #15171e
+set $bar-ws-focused-border-color #4e556e
+# Active workspace selector
+set $bar-ws-active-bg-color #636c8c
+set $bar-ws-active-text-color #15171e
+set $bar-ws-active-border-color #4e556e
+# Inactive workspace selector
+set $bar-ws-inactive-border-color #252732
+set $bar-ws-inactive-bg-color #313545
+set $bar-ws-inactive-text-color #a5abc0
+# Urgent workspace selector
+set $bar-ws-urgent-border-color #ff0000
+set $bar-ws-urgent-bg-color #ff0000
+set $bar-ws-urgent-text-color #ff0000
 
 ################################################################################
 ## APPERANCE
@@ -55,22 +73,25 @@ client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-c
 client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator-color
 client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color           $indicator-color
 
-#Hide side bars
-hide_edge_borders both
-
 gaps inner $gaps-inner
 gaps outer $gaps-outer
 
-# smart_gaps off
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+#Hide side bars
+hide_edge_borders both
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window none
+new_float normal
 
 # Disable top bar for all window, since we got gaps
 for_window[class="^.*"] border pixel 0
-
-# Make some windows floating by default
-for_window [title="Microsoft Teams Notification"] floating enable
-
-for_window [title="berry"] floating enable
-
 
 ################################################################################
 ## GENERAL KEYBINDINGS
@@ -86,7 +107,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # lock
 bindsym $mod+l exec --no-startup-id $Locker, mode "default"
-# bindsym $mod+shift+l exec /opt/glasspane/glasspane
 
 #
 # GAPS
@@ -97,65 +117,6 @@ bindsym $mod+shift+plus gaps inner all plus 5
 bindsym $mod+shift+minus gaps inner all minus 5
 bindsym $mod+c gaps outer all set 0; gaps inner all set 0
 bindsym $mod+shift+c gaps outer all set $gaps-outer; gaps inner all set $gaps-inner
-
-################################################################################
-## PROGRAMS
-################################################################################
-# Chromium browser
-bindsym $mod+Return exec brave-browser
-
-# Nautilus (File Manager)
-bindsym $mod+Ctrl+Return exec nautilus
-#bindsym $mod+Ctrl+Return exec dolphin
-#bindsym $mod+Ctrl+Return exec ranger
-#bindsym $mod+Ctrl+Return exec "urxvt -e bash -c ranger"
-
-# Terminal
-bindsym $mod+Shift+Return exec i3-sensible-terminal
-
-# Rofi (alternative to dmenu)
-bindsym $mod+d exec "rofi -show combi -config ~/.config/rofi/config.rasi"
-
-################################################################################
-## AUTOSTART
-################################################################################
-#Fix trackpad
-#exec_always --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113 HorizTwoFingerScroll=1 HorisScrollDelta=-113
-#exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5
-exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5 HorizScrollDelta=-29
-#Fix nautilus (File manager)
-exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
-
-#Fix displays and wallpapers
-exec_always /home/jlndk/.config/i3/scripts/fix-screens.sh
-
-#exec dwall firewatch
-#exec dynbg firewatch
-#exec sleep 3 && dynbg firewatch
-
-#Fix Num Lock
-exec_always --no-startup-id numlockx on
-
-#Polybar (taskbar)
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-#Compositor (Fixes transparancy and blur)
-exec_always --no-startup-id killall compton; compton --config ~/.config/compton/config
-
-#Conky (Information pane on desktop)
-exec_always --no-startup-id killall conky; conky
-
-#Power manager
-exec xfce4-power-manager
-
-#Notification manager
-exec_always --no-startup-id $HOME/.config/dunst/launch.sh
-
-#Keyboard remapping
-exec_always --no-startup-id /opt/rmacro/rmacro
-
-#Fix gnome screensaver
-exec_always --no-startup-id gnome-screensaver
 
 ################################################################################
 ## WINDOW CONTROL
@@ -176,6 +137,11 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -185,73 +151,86 @@ bindsym $mod+h split h
 # split in vertical orientation
 bindsym $mod+v split v
 
+# Toggle split
+bindsym $mod+q split toggle
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+q layout toggle split
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_togglebindsym $mod+Shift+Left move left
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+#bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+#bindsym $mod+minus scratchpad show
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
 
 ################################################################################
 ## WORKSPACES
 ################################################################################
 # Switch to workspace
-bindsym $mod+1 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace1
-bindsym $mod+2 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace2
-bindsym $mod+3 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace3
-bindsym $mod+4 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace4
-bindsym $mod+5 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace5
-bindsym $mod+6 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace6
-bindsym $mod+7 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace7
-bindsym $mod+8 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace8
-bindsym $mod+9 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace9
-bindsym $mod+0 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace10
+bindsym $mod+1 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace1
+bindsym $mod+2 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace2
+bindsym $mod+3 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace3
+bindsym $mod+4 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace4
+bindsym $mod+5 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace5
+bindsym $mod+6 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace6
+bindsym $mod+7 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace7
+bindsym $mod+8 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace8
+bindsym $mod+9 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace9
+bindsym $mod+0 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace10
 
 # Keybindings for numpad
-bindcode $mod+87 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace1
-bindcode $mod+88 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace2
-bindcode $mod+89 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace3
-bindcode $mod+83 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace4
-bindcode $mod+84 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace5
-bindcode $mod+85 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace6
-bindcode $mod+79 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace7
-bindcode $mod+80 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace8
-bindcode $mod+81 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace9
-bindcode $mod+90 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace10
+bindcode $mod+87 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace1
+bindcode $mod+88 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace2
+bindcode $mod+89 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace3
+bindcode $mod+83 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace4
+bindcode $mod+84 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace5
+bindcode $mod+85 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace6
+bindcode $mod+79 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace7
+bindcode $mod+80 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace8
+bindcode $mod+81 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace9
+bindcode $mod+90 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py switch $workspace10
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace1
-bindsym $mod+Shift+2 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace2
-bindsym $mod+Shift+3 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace3
-bindsym $mod+Shift+4 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace4
-bindsym $mod+Shift+5 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace5
-bindsym $mod+Shift+6 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace6
-bindsym $mod+Shift+7 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace7
-bindsym $mod+Shift+8 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace8
-bindsym $mod+Shift+9 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace9
-bindsym $mod+Shift+0 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace10
+bindsym $mod+Shift+1 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace1
+bindsym $mod+Shift+2 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace2
+bindsym $mod+Shift+3 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace3
+bindsym $mod+Shift+4 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace4
+bindsym $mod+Shift+5 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace5
+bindsym $mod+Shift+6 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace6
+bindsym $mod+Shift+7 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace7
+bindsym $mod+Shift+8 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace8
+bindsym $mod+Shift+9 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace9
+bindsym $mod+Shift+0 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace10
 
 # numpad
-bindcode $mod+Shift+87 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace1
-bindcode $mod+Shift+88 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace2
-bindcode $mod+Shift+89 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace3
-bindcode $mod+Shift+83 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace4
-bindcode $mod+Shift+84 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace5
-bindcode $mod+Shift+85 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace6
-bindcode $mod+Shift+79 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace7
-bindcode $mod+Shift+80 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace8
-bindcode $mod+Shift+81 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace9
-bindcode $mod+Shift+90 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace10
+bindcode $mod+Shift+87 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace1
+bindcode $mod+Shift+88 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace2
+bindcode $mod+Shift+89 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace3
+bindcode $mod+Shift+83 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace4
+bindcode $mod+Shift+84 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace5
+bindcode $mod+Shift+85 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace6
+bindcode $mod+Shift+79 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace7
+bindcode $mod+Shift+80 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace8
+bindcode $mod+Shift+81 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace9
+bindcode $mod+Shift+90 exec /home/jlndk/gits/dotfiles/i3/scripts/workspacemng.py move $workspace10
 
 workspace 1a output $monitor1
 workspace 1b output $monitor2
@@ -275,13 +254,15 @@ bindsym Ctrl+$mod+Mod1+3 move output $monitor3
 ## HARDWARE KEYBINDINGS
 ################################################################################
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh up
-bindsym XF86AudioLowerVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh down
-bindsym XF86AudioMute exec /home/jlndk/.config/i3/scripts/volume-manager.sh mute
+bindsym XF86AudioRaiseVolume exec /home/jlndk/gits/dotfiles/i3/scripts/volume-manager.sh up
+bindsym XF86AudioLowerVolume exec /home/jlndk/gits/dotfiles/i3/scripts/volume-manager.sh down
+bindsym XF86AudioMute exec /home/jlndk/gits/dotfiles/i3/scripts/volume-manager.sh mute
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec /home/jlndk/.config/i3/scripts/brightness-manager.sh up # increase screen brightness
-bindsym XF86MonBrightnessDown exec /home/jlndk/.config/i3/scripts/brightness-manager.sh down # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec /home/jlndk/gits/dotfiles/i3/scripts/brightness-manager.sh up # increase screen brightness
+# bindsym XF86MonBrightnessDown exec /home/jlndk/gits/dotfiles/i3/scripts/brightness-manager.sh down # decrease screen brightness
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /home/jlndk/etc/toggletouchpad.sh # toggle touchpad
@@ -293,7 +274,123 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 #Screenshot
-bindsym Print exec gnome-screenshot -i
+# bindsym Print exec gnome-screenshot -i
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+################################################################################
+## PROGRAMS
+################################################################################
+# Default browser
+bindsym $mod+Return exec brave
+
+# Nautilus (File Manager)
+bindsym $mod+Ctrl+Return exec nautilus
+#bindsym $mod+Ctrl+Return exec dolphin
+#bindsym $mod+Ctrl+Return exec ranger
+#bindsym $mod+Ctrl+Return exec "urxvt -e bash -c ranger"
+
+# Terminal
+# bindsym $mod+Shift+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec terminal
+
+# Dmenu
+bindsym $mod+d exec --no-startup-id dmenu_recency
+# Rofi (alternative to dmenu)
+# bindsym $mod+d exec "rofi -show combi -config ~/.config/rofi/config.rasi"
+# launch categorized menu
+bindsym $mod+z exec --no-startup-id morc_menu
+bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+
+
+################################################################################
+## AUTOSTART
+################################################################################
+#Fix trackpad
+#exec_always --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113 HorizTwoFingerScroll=1 HorisScrollDelta=-113
+#exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5
+# exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5 HorizScrollDelta=-29
+#Fix nautilus (File manager)
+# exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
+
+#Fix displays and wallpapers
+# exec_always /home/jlndk/gits/dotfiles/i3/scripts/fix-screens.sh
+
+#exec dwall firewatch
+#exec dynbg firewatch
+#exec sleep 3 && dynbg firewatch
+
+#Fix Num Lock
+# exec_always --no-startup-id numlockx on
+
+#Polybar (taskbar)
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#Compositor (Fixes transparancy and blur)
+exec_always --no-startup-id killall compton; compton -b --config ~/.config/compton/config
+# exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
+
+#Conky (Information pane on desktop)
+#exec_always --no-startup-id killall conky; conky
+
+#Power manager
+exec --no-startup-id xfce4-power-manager
+
+# Clipboard manager
+exec --no-startup-id clipit
+
+# Notification manager
+# exec_always --no-startup-id $HOME/.config/dunst/launch.sh
+
+#Keyboard remapping
+# exec_always --no-startup-id /opt/rmacro/rmacro
+
+#Fix gnome screensaver
+# exec_always --no-startup-id gnome-screensaver
+
+# Automatically Lock Desktop after inactivity
+exec --no-startup-id xautolock -time 10 -locker blurlock
+
+# Manjaro stuff
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+exec --no-startup-id pamac-tray
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+
+################################################################################
+## WINDOW RULES
+################################################################################
+# Open specific applications in floating mode
+for_window [title="Microsoft Teams Notification"] floating enable
+for_window [title="berry"] floating enable
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="calamares"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [title="About Pale Moon"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
 
 ################################################################################
 ## MODES
@@ -315,30 +412,59 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+# Set shut down, restart and locking features
+#bindsym $mod+shift+0 mode "$mode_system"
+#set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+#mode "$mode_system" {
+#    bindsym l exec --no-startup-id i3exit lock, mode "default"
+#    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+#    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+#    bindsym e exec --no-startup-id i3exit logout, mode "default"
+#    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+#    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+#    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+#    # exit system mode: "Enter" or "Escape"
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
+
+################################################################################
+## BAR
+################################################################################
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+bar {
+	i3bar_command i3bar
+	status_command i3status
+	position bottom
+
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output primary
+#	tray_output eDP1
+
+	bindsym button4 nop
+	bindsym button5 nop
+#   font xft:URWGothic-Book 11
+	strip_workspace_numbers no
+
+    colors {
+        background $bar-bg-color
+        statusline $bar-text-color
+        separator  $bar-seperator-color
+
+        #                  border                           background                  text
+        focused_workspace  $bar-ws-focused-border-color     $bar-ws-focused-bg-color    $bar-ws-focused-text-color
+        active_workspace   $bar-ws-active-border-color      $bar-ws-active-bg-color     $bar-ws-active-text-color
+        inactive_workspace $bar-ws-inactive-border-color    $bar-ws-inactive-bg-color   $bar-ws-inactive-text-color
+        urgent_workspace   $bar-ws-urgent-border-color      $bar-ws-urgent-bg-color     $bar-ws-urgent-text-color
+        binding_mode       #440044 #440044 #440044
+
+        # client.focused          $bg-color           $bg-color           $text-color           $indicator-color
+        # client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator-color
+        # client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator-color
+        # client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color           $indicator-color
+    }
 }
 
-bindsym Pause mode "$mode_system"
-
-mode "move to monitor" {
-    bindsym 1 move container to output $monitor1; mode "default"
-    bindsym 2 move container to output $monitor2; mode "default"
-    bindsym 3 move container to output $monitor3; mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+z mode "move to monitor"
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle

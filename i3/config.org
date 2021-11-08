@@ -1,0 +1,344 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+################################################################################
+## VARIABLES
+################################################################################
+# Define mod key (most commonly super or alt)
+set $mod Mod4
+
+# The program that acts as a lock screen
+set $Locker gnome-screensaver-command -l
+#set $Locker i3lock -c 1a202c
+
+set $gaps-inner 15
+set $gaps-outer 5
+
+# Get current monitor configuration
+set_from_resource $monitor1 i3wm.monitor1
+set_from_resource $monitor2 i3wm.monitor2
+set_from_resource $monitor3 i3wm.monitor3
+
+#Variable names for all ten workspaces
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+
+################################################################################
+## APPERANCE
+################################################################################
+set $bg-color		     #1c1e26
+set $inactive-bg-color   #1c1e26
+set $text-color          #f0f2f5
+set $inactive-text-color #777777
+set $urgent-bg-color     #E53935cc
+set $indicator-color     #68D391cc
+
+################################################################################
+## APPERANCE
+################################################################################
+#The main font for the entire WM
+font pango:JetBrains Mono 12
+
+# window colors
+#                       border              background          text                  indicator
+client.focused          $bg-color           $bg-color           $text-color           $indicator-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color  $indicator-color
+client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color           $indicator-color
+
+#Hide side bars
+hide_edge_borders both
+
+gaps inner $gaps-inner
+gaps outer $gaps-outer
+
+# smart_gaps off
+
+# Disable top bar for all window, since we got gaps
+for_window[class="^.*"] border pixel 0
+
+# Make some windows floating by default
+for_window [title="Microsoft Teams Notification"] floating enable
+
+for_window [title="berry"] floating enable
+
+
+################################################################################
+## GENERAL KEYBINDINGS
+################################################################################
+# reload the configuration file
+bindsym $mod+Ctrl+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# lock
+bindsym $mod+l exec --no-startup-id $Locker, mode "default"
+# bindsym $mod+shift+l exec /opt/glasspane/glasspane
+
+#
+# GAPS
+#
+bindsym $mod+plus  gaps outer all plus 5
+bindsym $mod+minus gaps outer all minus 5
+bindsym $mod+shift+plus gaps inner all plus 5
+bindsym $mod+shift+minus gaps inner all minus 5
+bindsym $mod+c gaps outer all set 0; gaps inner all set 0
+bindsym $mod+shift+c gaps outer all set $gaps-outer; gaps inner all set $gaps-inner
+
+################################################################################
+## PROGRAMS
+################################################################################
+# Chromium browser
+bindsym $mod+Return exec brave-browser
+
+# Nautilus (File Manager)
+bindsym $mod+Ctrl+Return exec nautilus
+#bindsym $mod+Ctrl+Return exec dolphin
+#bindsym $mod+Ctrl+Return exec ranger
+#bindsym $mod+Ctrl+Return exec "urxvt -e bash -c ranger"
+
+# Terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal
+
+# Rofi (alternative to dmenu)
+bindsym $mod+d exec "rofi -show combi -config ~/.config/rofi/config.rasi"
+
+################################################################################
+## AUTOSTART
+################################################################################
+#Fix trackpad
+#exec_always --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113 HorizTwoFingerScroll=1 HorisScrollDelta=-113
+#exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5
+exec_always --no-startup-id synclient VertScrollDelta=-113 HorizTwoFingerScroll=1 PalmDetect=1 AccelFactor=0.15 MaxSpeed=2.5 HorizScrollDelta=-29
+#Fix nautilus (File manager)
+exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
+
+#Fix displays and wallpapers
+exec_always /home/jlndk/.config/i3/scripts/fix-screens.sh
+
+#exec dwall firewatch
+#exec dynbg firewatch
+#exec sleep 3 && dynbg firewatch
+
+#Fix Num Lock
+exec_always --no-startup-id numlockx on
+
+#Polybar (taskbar)
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#Compositor (Fixes transparancy and blur)
+exec_always --no-startup-id killall compton; compton --config ~/.config/compton/config
+
+#Conky (Information pane on desktop)
+exec_always --no-startup-id killall conky; conky
+
+#Power manager
+exec xfce4-power-manager
+
+#Notification manager
+exec_always --no-startup-id $HOME/.config/dunst/launch.sh
+
+#Keyboard remapping
+exec_always --no-startup-id /opt/rmacro/rmacro
+
+#Fix gnome screensaver
+exec_always --no-startup-id gnome-screensaver
+
+################################################################################
+## WINDOW CONTROL
+################################################################################
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+BackSpace kill
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+q layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_togglebindsym $mod+Shift+Left move left
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+################################################################################
+## WORKSPACES
+################################################################################
+# Switch to workspace
+bindsym $mod+1 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace1
+bindsym $mod+2 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace2
+bindsym $mod+3 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace3
+bindsym $mod+4 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace4
+bindsym $mod+5 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace5
+bindsym $mod+6 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace6
+bindsym $mod+7 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace7
+bindsym $mod+8 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace8
+bindsym $mod+9 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace9
+bindsym $mod+0 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace10
+
+# Keybindings for numpad
+bindcode $mod+87 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace1
+bindcode $mod+88 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace2
+bindcode $mod+89 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace3
+bindcode $mod+83 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace4
+bindcode $mod+84 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace5
+bindcode $mod+85 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace6
+bindcode $mod+79 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace7
+bindcode $mod+80 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace8
+bindcode $mod+81 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace9
+bindcode $mod+90 exec /home/jlndk/.config/i3/scripts/workspacemng.py switch $workspace10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace1
+bindsym $mod+Shift+2 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace2
+bindsym $mod+Shift+3 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace3
+bindsym $mod+Shift+4 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace4
+bindsym $mod+Shift+5 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace5
+bindsym $mod+Shift+6 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace6
+bindsym $mod+Shift+7 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace7
+bindsym $mod+Shift+8 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace8
+bindsym $mod+Shift+9 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace9
+bindsym $mod+Shift+0 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace10
+
+# numpad
+bindcode $mod+Shift+87 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace1
+bindcode $mod+Shift+88 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace2
+bindcode $mod+Shift+89 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace3
+bindcode $mod+Shift+83 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace4
+bindcode $mod+Shift+84 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace5
+bindcode $mod+Shift+85 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace6
+bindcode $mod+Shift+79 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace7
+bindcode $mod+Shift+80 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace8
+bindcode $mod+Shift+81 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace9
+bindcode $mod+Shift+90 exec /home/jlndk/.config/i3/scripts/workspacemng.py move $workspace10
+
+workspace 1a output $monitor1
+workspace 1b output $monitor2
+workspace 1c output $monitor3
+
+bindsym $mod+Ctrl+1 focus output $monitor1
+bindsym $mod+Ctrl+2 focus output $monitor2
+bindsym $mod+Ctrl+3 focus output $monitor3
+
+bindsym $mod+Ctrl+Left focus output left
+bindsym $mod+Ctrl+Right focus output right
+
+bindsym Ctrl+$mod+Mod1+Right move output right
+bindsym Ctrl+$mod+Mod1+Left move output left
+
+bindsym Ctrl+$mod+Mod1+1 move output $monitor1
+bindsym Ctrl+$mod+Mod1+2 move output $monitor2
+bindsym Ctrl+$mod+Mod1+3 move output $monitor3
+
+################################################################################
+## HARDWARE KEYBINDINGS
+################################################################################
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh up
+bindsym XF86AudioLowerVolume exec /home/jlndk/.config/i3/scripts/volume-manager.sh down
+bindsym XF86AudioMute exec /home/jlndk/.config/i3/scripts/volume-manager.sh mute
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec /home/jlndk/.config/i3/scripts/brightness-manager.sh up # increase screen brightness
+bindsym XF86MonBrightnessDown exec /home/jlndk/.config/i3/scripts/brightness-manager.sh down # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /home/jlndk/etc/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+#Screenshot
+bindsym Print exec gnome-screenshot -i
+
+################################################################################
+## MODES
+################################################################################
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym Pause mode "$mode_system"
+
+mode "move to monitor" {
+    bindsym 1 move container to output $monitor1; mode "default"
+    bindsym 2 move container to output $monitor2; mode "default"
+    bindsym 3 move container to output $monitor3; mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+z mode "move to monitor"

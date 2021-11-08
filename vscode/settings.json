@@ -52,7 +52,7 @@
     /**
     * Typography
     **/
-    "workbench.colorTheme": "Horizon",
+    "workbench.colorTheme": "Horizon Dark",
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 16,
     "editor.fontLigatures": true,
@@ -203,5 +203,4 @@
     "workbench.activityBar.visible": false,
     "githd.blameView.enabled": false,
     "githd.editor.disabled": true,
-    "window.zoomLevel": 1,
 }
