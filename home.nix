@@ -11,6 +11,7 @@
     firefox
     gparted
     slack
+    neofetch
   ];
 
   programs.git = {
