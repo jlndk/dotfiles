@@ -1,7 +1,7 @@
 1. Boot into plasma live install env
-2. Make partitions
+2. Make partitions (for legacy boot)
     1. Open Gparted
-    2. Make gpt partition table
+    2. Make msdos partition table
     3. Make main partition:
         * (**IMPORTANT**) label: "nixos"
         * ext4
