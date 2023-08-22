@@ -114,7 +114,16 @@
     wget
     curl
     gparted
-    alacritty
+  ];
+
+  # Additional fonts
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    fira-code
+    fira-code-symbols
+    jetbrains-mono
+    inter
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -5,6 +5,10 @@
     btop
   ];
 
+  imports = [
+    ./alacritty.nix
+  ];
+
   programs.git = {
     enable = true;
     userName = "Jonas Lindenskov Nielsen";
