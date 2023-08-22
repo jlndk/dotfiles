@@ -72,7 +72,8 @@
       * Typography
       **/
       # "workbench.colorTheme" = "Horizon";
-      "workbench.colorTheme" = "poimandres";
+      # "workbench.colorTheme" = "poimandres";
+      "workbench.colorTheme" = "Rosé Pine";
       "editor.fontFamily" = "JetBrains Mono";
       "editor.fontSize" = 16;
       "editor.fontLigatures" = true;
