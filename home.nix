@@ -1,13 +1,15 @@
 {config, pkgs, ...}:
 
 {
-  home.packages = with pkgs; [ 
-    btop
-  ];
-
   imports = [
     ./alacritty.nix
     ./vscode.nix
+  ];
+
+  home.packages = with pkgs; [
+    btop
+    firefox
+    gparted
   ];
 
   programs.git = {

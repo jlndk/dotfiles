@@ -101,9 +101,6 @@
     isNormalUser = true;
     description = "Jonas Lindenskov Nielsen";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -112,7 +109,6 @@
     vim
     wget
     curl
-    gparted
   ];
 
   # Additional fonts
