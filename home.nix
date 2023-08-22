@@ -7,6 +7,7 @@
 
   imports = [
     ./alacritty.nix
+    ./vscode.nix
   ];
 
   programs.git = {

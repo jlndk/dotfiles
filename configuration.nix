@@ -103,7 +103,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      vscode
     ];
   };
 
