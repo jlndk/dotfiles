@@ -10,6 +10,7 @@
     btop
     firefox
     gparted
+    slack
   ];
 
   programs.git = {
