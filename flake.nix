@@ -10,31 +10,33 @@
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, home-manager }: 
-    let 
+  outputs = { self, nixpkgs, home-manager }:
+    let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-    in {
+    in
+    {
       nixosConfigurations = {
         jlndk = lib.nixosSystem {
           inherit system;
-          modules = [ 
+          modules = [
             ./configuration.nix
-          
-            home-manager.nixosModules.home-manager {
+
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jlndk = {
-                imports = [ ./home.nix ];
+                imports = [ ./home/home.nix ];
               };
             }
           ];
         };
       };
     };
-  
+
 }
