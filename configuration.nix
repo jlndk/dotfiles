@@ -96,11 +96,15 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable zsh shell (configured in home manager, but needs to be enabled here to set it as the default shell)
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jlndk = {
     isNormalUser = true;
     description = "Jonas Lindenskov Nielsen";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:

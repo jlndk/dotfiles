@@ -4,6 +4,7 @@
   imports = [
     ./alacritty.nix
     ./vscode.nix
+    ./zsh.nix
   ];
 
   home.packages = with pkgs; [
@@ -12,6 +13,9 @@
     gparted
     slack
     neofetch
+
+    # Required for vscode to format nix files
+    nixpkgs-fmt
   ];
 
   programs.git = {

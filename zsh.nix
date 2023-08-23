@@ -52,9 +52,9 @@
         src = pkgs.fetchFromGitHub {
           owner = "jscutlery";
           repo = "nx-completion";
-          # Update 18. november 2022
-          rev = "84386914d55b2e73285069c8f156348255da4a60";
-          sha256 = "deYpsbnWDBk/uRzJetuHg+LSt6O9U1fOMBEv1GHBrPo=";
+          # Update 23. August 2023
+          rev = "3ffa1c4f0ae6096a60c66949903bb798ab72980d";
+          sha256 = "mXWaOLxVWSt2rQcthwu3SS2lj+Tyk9usS3TYMlpRjic=";
         };
       }
     ];
