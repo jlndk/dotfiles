@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -13,6 +13,9 @@
     gparted
     slack
     neofetch
+
+    # For setting background
+    swww
 
     # Required for vscode to format nix files
     nixpkgs-fmt
