@@ -10,8 +10,9 @@ To remove the global theme completely, use
 */
 
 * {
-  font-family: Iosevka;
+  font-family: "Inter";
   font-size: 16px;
+  color: white;
 }
 
 .background {
