@@ -19,7 +19,7 @@
         #   "eDP-1"
         #   "HDMI-A-1"
         # ];
-        modules-left = [ "wlr/workspaces" ];
+        modules-left = [ "wlr/workspaces" "hyprland/submap" ];
         modules-center = [ "clock" ];
         modules-right = [ "battery" ];
 
@@ -44,6 +44,12 @@
           on-click = "activate";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
+        };
+
+        "hyprland/submap" = {
+          "format" = "{}";
+          "max-length" = 8;
+          "tooltip" = false;
         };
 
         clock = {
