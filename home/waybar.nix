@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    package = pkgs-unstable.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
 
@@ -47,7 +47,6 @@
         };
 
         clock = {
-          # "timezone" = "America/New_York";
           format = "{:%H:%M:%S}";
           interval = 1;
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
@@ -57,17 +56,15 @@
         battery = {
           states = {
             good = 95;
-            warning = 30;
-            critical = 20;
+            warning = 20;
+            critical = 10;
           };
-          format = "{capacity}%";
-          # format-charging = "{capacity}% ";
-          # format-plugged = "{capacity}% ";
-          # format-alt = "{time} {icon}";
-          # An empty format will hide the module
-          # format-good = "";
-          # format-full = "";
-          # format-icons = ["" "" "" "" ""];
+
+          format = "{capacity}% {icon}";
+          format-icons = [ "" "" "" "" "" ];
+          format-charging = "{capacity}% ";
+          format-plugged = "{capacity}% ";
+          format-full = "{capacity}% ";
         };
 
         # "custom/hello-from-waybar" = {<

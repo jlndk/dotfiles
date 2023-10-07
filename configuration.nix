@@ -123,6 +123,7 @@
     fira-code-symbols
     jetbrains-mono
     inter
+    font-awesome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
