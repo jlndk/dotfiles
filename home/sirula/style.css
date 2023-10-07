@@ -16,14 +16,14 @@ To remove the global theme completely, use
 }
 
 .background {
-  background: transparent;
+  background: #191724;
 }
 
 #root-box,
 .background,
 #app-list,
 .overlay-indicator {
-  background: transparent;
+  background: #191724;
 }
 
 .app-row {
