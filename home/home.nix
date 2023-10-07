@@ -9,7 +9,6 @@
   ];
 
   home.packages = with pkgs; [
-    btop
     firefox
     gparted
     slack
@@ -24,6 +23,8 @@
     nixpkgs-fmt
   ];
 
+  programs.btop.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Jonas Lindenskov Nielsen";
@@ -32,6 +33,9 @@
 
   # Hyprland
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
+
+  # Btop
+  xdg.configFile."btop/themes/rose-pine.theme".source = ./btop/rose-pine.theme;
 
   # Sirula
   xdg.configFile."sirula/config.toml".source = ./sirula/config.toml;
