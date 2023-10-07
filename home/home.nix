@@ -23,7 +23,12 @@
     nixpkgs-fmt
   ];
 
-  programs.btop.enable = true;
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "rose-pine";
+    };
+  };
 
   programs.git = {
     enable = true;
