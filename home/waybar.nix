@@ -68,7 +68,7 @@
 
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
-          format-charging = "{capacity}% ";
+          format-charging = "{capacity}% ";
           format-plugged = "{capacity}% ";
           format-full = "{capacity}% ";
         };
