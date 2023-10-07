@@ -21,7 +21,7 @@
         # ];
         modules-left = [ "wlr/workspaces" "hyprland/submap" ];
         modules-center = [ "clock" ];
-        modules-right = [ "battery" ];
+        modules-right = [ "network" "battery" ];
 
         "wlr/workspaces" = {
           format = "{icon}";
@@ -66,11 +66,22 @@
             critical = 10;
           };
 
-          format = "{capacity}% {icon}";
+          format = "{icon}<span size='10pt' color='#a7a4bc' font_scale='subscript'>  {capacity}%</span>";
           format-icons = [ "" "" "" "" "" ];
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
-          format-full = "{capacity}% ";
+          format-charging = "<span size='10pt' color='#a7a4bc' font_scale='subscript'>  {capacity}%</span>";
+          format-plugged = "<span size='10pt' color='#a7a4bc' font_scale='subscript'>  {capacity}%</span>";
+          format-full = "<span size='10pt' color='#a7a4bc' font_scale='subscript'>  {capacity}%</span>";
+        };
+
+        "network" = {
+          interface = "enp0s3";
+          format-ethernet = "";
+          format-wifi = "";
+          format-disconnected = "Disconnected";
+          tooltip-format-ethernet = "Ethernet ({ifname}: {ipaddr})";
+          tooltip-format-wifi = "Wifi: {essid} {signalStrength}% ({ifname}: {ipaddr})";
+          tooltip-format-disconnected = "Disconnected";
+          on-click = "nm-connection-editor";
         };
 
         # "custom/hello-from-waybar" = {<
@@ -208,6 +219,10 @@
         background-color: red;
       }
 
+      #battery #label {
+        color: red;
+      }
+
       /*
       #battery {
         background-color: #ffffff;
@@ -261,6 +276,7 @@
         background-color: #90b1b1;
       }
 
+      /*
       #network {
         background-color: #2980b9;
       }
@@ -268,6 +284,7 @@
       #network.disconnected {
         background-color: #f53c3c;
       }
+      */
 
       #pulseaudio {
         background-color: #f1c40f;
