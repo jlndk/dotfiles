@@ -70,6 +70,16 @@
   # Enable X11 virtualbox guest extensions
   # virtualisation.virtualbox.guest.x11 = true;
 
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'WLR_RENDERER_ALLOW_SOFTWARE=1 Hyprland'";
+        user = "jlndk";
+      };
+    };
+  };
+
   # Enable the Hyprland Window Manager
   programs.hyprland = {
     enable = true;
