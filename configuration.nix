@@ -74,7 +74,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'WLR_RENDERER_ALLOW_SOFTWARE=1 Hyprland'";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
         user = "jlndk";
       };
     };
@@ -124,6 +124,10 @@
     wget
     curl
   ];
+
+  environment.sessionVariables = rec {
+    WLR_RENDERER_ALLOW_SOFTWARE = "1";
+  };
 
   # Additional fonts
   fonts.fonts = with pkgs; [
